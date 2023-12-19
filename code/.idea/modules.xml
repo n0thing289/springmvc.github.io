@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/review-01-quickstart/review-01-quickstart.iml" filepath="$PROJECT_DIR$/review-01-quickstart/review-01-quickstart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-01-quickstart/springmvc-01-quickstart.iml" filepath="$PROJECT_DIR$/springmvc-01-quickstart/springmvc-01-quickstart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-02-bean-load/springmvc-02-bean-load.iml" filepath="$PROJECT_DIR$/springmvc-02-bean-load/springmvc-02-bean-load.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-03-request-mapping/springmvc-03-request-mapping.iml" filepath="$PROJECT_DIR$/springmvc-03-request-mapping/springmvc-03-request-mapping.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-04-request-param/springmvc-04-request-param.iml" filepath="$PROJECT_DIR$/springmvc-04-request-param/springmvc-04-request-param.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-05-response/springmvc-05-response.iml" filepath="$PROJECT_DIR$/springmvc-05-response/springmvc-05-response.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-06-rest/springmvc-06-rest.iml" filepath="$PROJECT_DIR$/springmvc-06-rest/springmvc-06-rest.iml" />
+    </modules>
+  </component>
+</project>

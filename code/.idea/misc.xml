@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/review-01-quickstart" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-01-quickstart" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-02-bean-load" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-03-request-mapping" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-04-request-param" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-05-response" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-06-rest" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/review-01-quickstart/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-01-quickstart/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-02-bean-load/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-03-request-mapping/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-04-request-param/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-05-response/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-06-rest/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

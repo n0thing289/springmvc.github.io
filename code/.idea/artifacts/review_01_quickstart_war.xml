@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="review-01-quickstart:war">
+    <output-path>$PROJECT_DIR$/review-01-quickstart/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>review-01-quickstart</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="review-01-quickstart.war">
+      <element id="artifact" artifact-name="review-01-quickstart:war exploded" />
+    </root>
+  </artifact>
+</component>

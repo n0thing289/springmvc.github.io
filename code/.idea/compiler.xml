@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springmvc-05-response" />
+        <module name="springmvc-06-rest" />
+        <module name="springmvc-01-quickstart" />
+        <module name="review-01-quickstart" />
+        <module name="springmvc-02-bean-load" />
+        <module name="springmvc-03-request-mapping" />
+        <module name="springmvc-04-request-param" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="review-01-quickstart" target="1.8" />
+      <module name="springmvc-01-quickstart" target="8" />
+      <module name="springmvc-02-bean-load" target="8" />
+      <module name="springmvc-03-request-mapping" target="8" />
+      <module name="springmvc-04-request-param" target="8" />
+      <module name="springmvc-05-response" target="8" />
+      <module name="springmvc-06-rest" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
