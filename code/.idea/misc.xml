@@ -8,6 +8,11 @@
     <file type="web" url="file://$PROJECT_DIR$/springmvc-04-request-param" />
     <file type="web" url="file://$PROJECT_DIR$/springmvc-05-response" />
     <file type="web" url="file://$PROJECT_DIR$/springmvc-06-rest" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-07-rest-case" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-08-ssm" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-09-ssm-result" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-10-ssm-exception" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-11-ssm-page" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -19,6 +24,12 @@
         <option value="$PROJECT_DIR$/springmvc-04-request-param/pom.xml" />
         <option value="$PROJECT_DIR$/springmvc-05-response/pom.xml" />
         <option value="$PROJECT_DIR$/springmvc-06-rest/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-07-rest-case/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-08-ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-08-ssm-result/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-09-ssm-result/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-10-ssm-exception/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-11-ssm-page/pom.xml" />
       </list>
     </option>
   </component>

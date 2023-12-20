@@ -3217,3 +3217,30 @@ public class SpringMvcConfig {
 </html>
 ```
 
+## 六、SSM整合
+
+环境搭建（依赖，config）
+
+开发mapper、service、controller
+
+测试service和controller
+
+前后端数据交互-统一格式
+
+异常表现层处理，使用aop或者springmvc-异常处理器
+
+```java
+@RestControllerAdvice//@Controller + @ResponseBody + ...
+public class ProjectExceptionAdvice {
+
+    @ExceptionHandler(Exception.class)//拦截所有异常Exception.class
+    public Result doException(Exception exception){//拦截到的异常会作为参数
+        System.out.println("处理所有异常");
+        return new Result(666,null,"出异常了");//可以返回前端一些数据
+    }
+    //其他层的异常怎么抛到这里集中处理?
+}
+```
+
+
+

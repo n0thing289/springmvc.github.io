@@ -9,6 +9,11 @@
       <module fileurl="file://$PROJECT_DIR$/springmvc-04-request-param/springmvc-04-request-param.iml" filepath="$PROJECT_DIR$/springmvc-04-request-param/springmvc-04-request-param.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc-05-response/springmvc-05-response.iml" filepath="$PROJECT_DIR$/springmvc-05-response/springmvc-05-response.iml" />
       <module fileurl="file://$PROJECT_DIR$/springmvc-06-rest/springmvc-06-rest.iml" filepath="$PROJECT_DIR$/springmvc-06-rest/springmvc-06-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-07-rest-case/springmvc-07-rest-case.iml" filepath="$PROJECT_DIR$/springmvc-07-rest-case/springmvc-07-rest-case.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-08-ssm/springmvc-08-ssm.iml" filepath="$PROJECT_DIR$/springmvc-08-ssm/springmvc-08-ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-09-ssm-result/springmvc-09-ssm-result.iml" filepath="$PROJECT_DIR$/springmvc-09-ssm-result/springmvc-09-ssm-result.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-10-ssm-exception/springmvc-10-ssm-exception.iml" filepath="$PROJECT_DIR$/springmvc-10-ssm-exception/springmvc-10-ssm-exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springmvc-11-ssm-page/springmvc-11-ssm-page.iml" filepath="$PROJECT_DIR$/springmvc-11-ssm-page/springmvc-11-ssm-page.iml" />
     </modules>
   </component>
 </project>
