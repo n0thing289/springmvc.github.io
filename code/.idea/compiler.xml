@@ -8,6 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springmvc-05-response" />
         <module name="springmvc-06-rest" />
+        <module name="springmvc-12-interceptor" />
+        <module name="springmvc-09-ssm-result" />
+        <module name="springmvc-11-ssm-page" />
         <module name="springmvc-01-quickstart" />
         <module name="springmvc-10-ssm-exception" />
         <module name="review-01-quickstart" />
@@ -15,9 +18,7 @@
         <module name="springmvc-02-bean-load" />
         <module name="springmvc-08-ssm" />
         <module name="springmvc-03-request-mapping" />
-        <module name="springmvc-09-ssm-result" />
         <module name="springmvc-04-request-param" />
-        <module name="springmvc-11-ssm-page" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -33,6 +34,7 @@
       <module name="springmvc-09-ssm-result" target="8" />
       <module name="springmvc-10-ssm-exception" target="8" />
       <module name="springmvc-11-ssm-page" target="8" />
+      <module name="springmvc-12-interceptor" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

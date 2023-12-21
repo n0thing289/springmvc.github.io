@@ -553,7 +553,7 @@ SpringMVC入门程序开发总结(1+N)
 4. 由/save匹配执行对应的方法save(）
    * 上面的第五步已经将请求路径和方法建立了对应关系，通过/save就能找到对应的save方法
 5. 执行save()
-6. 检测到有@ResponseBody直接将save()方法的返回值作为响应求体返回给请求方
+6. 检测到有@ResponseBody直接将save()方法的返回值作为响应体返回给请求方
 
 ### 2.5 bean加载控制
 
@@ -3219,7 +3219,161 @@ public class SpringMvcConfig {
 
 ## 六、SSM整合
 
-环境搭建（依赖，config）
+1. 环境搭建（依赖，config）
+
+   用到的依赖
+
+   ```java
+   spring-webmvc、spring-jdbc、spring-test、jackson-databind、javax.servlet-api
+   mybatis、mybatis-spring、mysql-connector-java、druid
+   logback-classic、junit
+   ```
+
+   配置类
+
+   SpringMvcConfig
+
+   ```java
+   @Configuration
+   @ComponentScan({"com.itheima.controller"})//扫config是为了SpringMvcConfigSupport, 后续可以替换WebMvcConfigurer
+   @EnableWebMvc//开启json和pojo对象自动转换
+   public class SpringMvcConfig implements WebMvcConfigurer{
+       //放行静态资源
+       @Override
+       public void addResourceHandlers(ResourceHandlerRegistry registry) {
+           //当访问/pages下的时候走/pages目录下的内容
+           registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
+           registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+           registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+           registry.addResourceHandler("/plugins/**").addResourceLocations("/plugins/");
+       }
+   
+       @Autowired
+       private ProjectInterceptor projectInterceptor;
+       @Autowired
+       private ProjectIntercepter2 projectInterceptor2;
+   	//添加拦截器
+       @Override
+       public void addInterceptors(InterceptorRegistry registry) {
+           registry.addInterceptor(projectInterceptor).addPathPatterns("/books/*");
+           registry.addInterceptor(projectInterceptor2).addPathPatterns("/books/*");
+       }
+   }
+   ```
+
+   ServletConfig
+
+   ```java
+   public class ServletConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
+   	@Override
+       protected Class<?>[] getRootConfigClasses() {
+           return new Class[]{SpringConfig.class};
+       }
+   
+       @Override
+       protected Class<?>[] getServletConfigClasses() {
+           return new Class[]{SpringMvcConfig.class};
+       }
+   
+       @Override
+       protected String[] getServletMappings() {
+           return new String[]{"/"};
+       }
+       //配置中文过滤器
+       @Override
+       protected Filter[] getServletFilters() {
+           CharacterEncodingFilter filter = new CharacterEncodingFilter();
+           filter.setEncoding("UTF-8");
+           return new Filter[]{filter};
+       }
+   }
+   ```
+
+   SpringConfig
+
+   ```java
+   @Configuration
+   @ComponentScan({"com.itheima.service"})
+   @PropertySource("classpath:jdbc.properties")
+   @Import({JdbcConfig.class, MybatisConfig.class})
+   @EnableTransactionManagement
+   public class SpringConfig{}
+   ```
+
+   JdbcConfig
+
+   ```java
+   public class JdbcConfig {
+   
+       @Value("${jdbc.driver}")
+       private String driver;
+       @Value("${jdbc.url}")
+       private String url;
+       @Value("${jdbc.username}")
+       private String username;
+       @Value("${jdbc.password}")
+       private String password;
+       
+   	//提供数据源对象
+       @Bean
+       public DataSource dataSource() {
+           DruidDataSource dataSource = new DruidDataSource();
+           dataSource.setDriverClassName(driver);
+           dataSource.setUrl(url);
+           dataSource.setUsername(username);
+           dataSource.setPassword(password);
+           return dataSource;
+       }
+       
+   	//开启事务第二步
+       @Bean
+       public PlatformTransactionManager transactionManager(DataSource dataSource){
+           DataSourceTransactionManager ds = new DataSourceTransactionManager();
+           ds.setDataSource(dataSource);
+           return ds;
+       }
+   }
+   ```
+
+   MybatisConfig
+
+   ```java
+   public class MybatisConfig {
+       //配SqlSessionFactoryBean
+       @Bean
+       public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource){
+           SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+           //还需要两配置
+           //1. dataSource
+           bean.setDataSource(dataSource);//spring根据类型自动装配到这里
+           //2. 扫描pojo包
+           bean.setTypeAliasesPackage("com.itheima.pojo");
+           return bean;
+       }
+   
+       //映射器
+       @Bean
+       public MapperScannerConfigurer mapperScannerConfigurer(){
+           MapperScannerConfigurer msc = new MapperScannerConfigurer();
+           msc.setBasePackage("com.itheima.mapper");//扫描这个包下的接口,mybatis自动生成实现类
+           return msc;
+       }
+   
+       //自动驼峰映射?
+       //开事务?
+   }
+   ```
+
+   配置文件
+
+   jdbc.properties
+
+   ```properties
+   jdbc.username=root
+   jdbc.password=hsp
+   jdbc.url=jdbc:mysql://localhost:3306/ssm_db?rewriteBatchedStatements=true
+   jdbc.driver=com.mysql.jdbc.Driver
+   ```
 
 开发mapper、service、controller
 
@@ -3241,6 +3395,107 @@ public class ProjectExceptionAdvice {
     //其他层的异常怎么抛到这里集中处理?
 }
 ```
+
+## 七、拦截器
+
+当前如何工作
+
+![image-20231220212636455](./SpringMVC_day01imgs/image-20231220212636455.png)
+
+拦截器作用：在控制器执行前后执行一些代码
+
+### 写一个拦截器
+
+1. 拦截器的配置
+
+   让SpringMvcConfig去实现WebMvcConfigurer这个接口
+
+2. 编写拦截器类,@Component是为了方便后面注入给SpringMvcConfig使用
+
+   ```java
+   //拦截器去实现这个接口,并重写其三个方法
+   @Component
+   public class ProjectInterceptor implements HandlerInterceptor {
+   
+       @Override
+       public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+           System.out.println("preHandle...");
+           return true;//false可以中止原始操作
+       }
+   
+       @Override
+       public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+           System.out.println("postHandle...");
+       }
+   
+       @Override
+       public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+           System.out.println("afterCompletion...");
+       }
+   }
+   ```
+
+3. 在SpringMvcConfig配置类中添加拦截器
+
+   ```java
+   @Autowired
+   private ProjectInterceptor projectInterceptor;
+   @Autowired
+   private ProjectIntercepter2 projectInterceptor2;
+   
+   @Override
+   public void addInterceptors(InterceptorRegistry registry) {
+       registry.addInterceptor(projectInterceptor).addPathPatterns("/books/*");
+       registry.addInterceptor(projectInterceptor2).addPathPatterns("/books/*");
+   }
+   ```
+
+拦截器链顺序
+
+![image-20231220221008487](./SpringMVC_day01imgs/image-20231220221008487.png)
+
+## 给静态资源放行
+
+原本是在SpringMvcSupport extends WebMvcConfigurationSupport
+
+1. 在SpringMvcConfig配置类中去实现WebMvcConfigurer接口
+
+   ```java
+   class SpringMvcConfig implements WebMvcConfigurer
+   ```
+
+2. 重写addResourceHandlers方法
+
+   ```java
+   @Override
+   public void addResourceHandlers(ResourceHandlerRegistry registry) {
+       //当访问/pages下的时候走/pages目录下的内容
+       registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
+       registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+       registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+       registry.addResourceHandler("/plugins/**").addResourceLocations("/plugins/");
+   }
+   ```
+
+## 处理中文乱码
+
+1. 在ServletContainersIntiConfig配置类中实现AbstractAnnotationConfigDispatcherServletInitializer接口
+
+   ```java
+   class ServletContainersIntiConfig extends AbstractAnnotationConfigDispatcherServletInitializer
+   ```
+
+2. 重写方法
+
+   ```java
+   //乱码处理
+   @Override
+   protected Filter[] getServletFilters() {
+       CharacterEncodingFilter filter = new CharacterEncodingFilter();
+       filter.setEncoding("UTF-8");
+       return new Filter[]{filter};
+   }
+   ```
 
 
 

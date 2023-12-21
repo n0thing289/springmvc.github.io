@@ -13,6 +13,7 @@
     <file type="web" url="file://$PROJECT_DIR$/springmvc-09-ssm-result" />
     <file type="web" url="file://$PROJECT_DIR$/springmvc-10-ssm-exception" />
     <file type="web" url="file://$PROJECT_DIR$/springmvc-11-ssm-page" />
+    <file type="web" url="file://$PROJECT_DIR$/springmvc-12-interceptor" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -30,6 +31,7 @@
         <option value="$PROJECT_DIR$/springmvc-09-ssm-result/pom.xml" />
         <option value="$PROJECT_DIR$/springmvc-10-ssm-exception/pom.xml" />
         <option value="$PROJECT_DIR$/springmvc-11-ssm-page/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc-12-interceptor/pom.xml" />
       </list>
     </option>
   </component>

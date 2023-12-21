@@ -41,7 +41,6 @@ public class BookController {
             result.setCode(Code.GET_OK);
             result.setMsg(null);
         }
-        int i = 1/0;
         return result;
     }
 
