@@ -3477,6 +3477,8 @@ public class ProjectExceptionAdvice {
    }
    ```
 
+
+
 ## 处理中文乱码
 
 1. 在ServletContainersIntiConfig配置类中实现AbstractAnnotationConfigDispatcherServletInitializer接口
@@ -3496,6 +3498,18 @@ public class ProjectExceptionAdvice {
        return new Filter[]{filter};
    }
    ```
+
+
+
+## controller方法使用HttpServletRequest
+
+```java
+@RequestMapping("/user/login")
+@ResponseBody
+public String login(HttpServletRequest request) {
+    return "UserController login(HttpServletRequest request = " + request + ") 执行";
+}
+```
 
 
 
