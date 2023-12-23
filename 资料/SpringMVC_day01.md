@@ -1405,7 +1405,7 @@ public class ServletContainersInitConfig extends AbstractAnnotationConfigDispatc
 
 CharacterEncodingFilter是在spring-web包中，所以用之前需要导入对应的jar包。
 
-### 4.3 五种类型参数传递
+### ==4.3 五种类型参数传递==
 
 前面我们已经能够使用GET或POST来发送请求和数据，所携带的数据都是比较简单的数据，接下来在这个基础上，我们来研究一些比较负责的参数传递，常见的参数种类有:
 
@@ -1610,7 +1610,7 @@ public String listParam(@RequestParam List<String> likes){
 | 作用     | 绑定请求参数与处理器方法形参间的关系                   |
 | 相关参数 | required：是否为必传参数 <br/>defaultValue：参数默认值 |
 
-### 4.4 JSON数据传输参数
+### ==4.4 JSON数据传输参数==
 
 前面我们说过，现在比较流行的开发方式为异步调用。前后台以异步方式进行交换，传输的数据使用的是==JSON==,所以前端如果发送的是JSON数据，后端该如何接收?
 
@@ -1780,7 +1780,7 @@ SpringMVC接收JSON数据的实现步骤为:
 | 位置 | SpringMVC控制器方法形参定义前面                              |
 | 作用 | 将请求中请求体所包含的数据传递给请求参数，此注解一个处理器方法只能使用一次 |
 
-#### @RequestBody与@RequestParam区别
+#### ==@RequestBody与@RequestParam区别==
 
 * 区别
   * @RequestParam用于接收url地址传参，表单传参【application/x-www-form-urlencoded】
@@ -1966,7 +1966,7 @@ public interface Converter<S, T> {
 
 **==注意:SpringMVC的配置类把@EnableWebMvc当做标配配置上去，不要省略==**
 
-### 4.6 响应
+### ==4.6 响应==
 
 SpringMVC接收到请求和数据后，进行一些了的处理，当然这个处理可以是转发给Service，Service层再调用Dao层完成的，不管怎样，处理完以后，都需要将结果告知给用户。
 
@@ -2157,7 +2157,7 @@ public class UserController {
 
 ![1630497741388](assets/1630497741388.png)
 
-#### 4.6.4 响应JSON数据
+#### ==4.6.4 响应JSON数据==
 
 ##### 响应POJO对象
 
